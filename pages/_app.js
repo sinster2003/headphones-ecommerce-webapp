@@ -1,11 +1,15 @@
-import { Layout } from '@/components';
-import '@/styles/globals.css'
+import { Layout } from "@/components";
+import { Toaster } from "react-hot-toast";
+import AppContextProvider from "@/context/AppContextProvider";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
-  return(
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+  return (
+    <AppContextProvider>
+      <Layout>
+        <Toaster/>
+        <Component {...pageProps} />
+      </Layout>
+    </AppContextProvider>
   );
-    
 }
