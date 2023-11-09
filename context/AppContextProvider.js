@@ -20,16 +20,12 @@ const AppContextProvider = ({ children }) => {
     );
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 
-    if(totalQuantities === 0) {
-        setShowCart(true);
-    }
-
     if (checkProductInCart) {
       const newCartItems = cartItems.map((item) => {
         if (item._id === product._id) {
           return {
-            ...product,
-            quantity: product.quantity + quantity,
+            ...item,
+            quantity: item.quantity + quantity,
           };
         }
 
@@ -63,6 +59,7 @@ const AppContextProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         showCart,
+        setShowCart,
         cartItems,
         totalPrice,
         totalQuantities,
