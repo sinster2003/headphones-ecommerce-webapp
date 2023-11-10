@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import toast, { Toast } from "react-hot-toast";
+import toast from "react-hot-toast";
 export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
@@ -9,7 +9,23 @@ const AppContextProvider = ({ children }) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
+  const setToLocalStorage = (cart) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const getFromLocalStorage = () => {
+    if (typeof localStorage !== "undefined") {
+      const cartShop = JSON.parse(localStorage.getItem("cart"));
+      if (cartShop) {
+        return cartShop;
+      }
+    }
+    return [];
+  };
+
   const onAdd = (product, quantity) => {
+    const totalQuantities = (prevTotalQuantities) =>
+      prevTotalQuantities + quantity;
 
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
@@ -18,7 +34,8 @@ const AppContextProvider = ({ children }) => {
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + quantity * product.price
     );
-    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
+
+    setTotalQuantities(totalQuantities);
 
     if (checkProductInCart) {
       const newCartItems = cartItems.map((item) => {
@@ -33,16 +50,75 @@ const AppContextProvider = ({ children }) => {
       });
 
       setCartItems(newCartItems);
-    } 
-    else {
+      setToLocalStorage(newCartItems);
+    } else {
+      product.quantity = quantity;
+      const newCartItems = [...cartItems, { ...product }];
 
-        product.quantity = quantity;
-        const newCartItems = [...cartItems,{...product}];
-
-        setCartItems(newCartItems);
+      setCartItems(newCartItems);
+      setToLocalStorage(newCartItems);
     }
 
-    toast.success(`${quantity} ${product.productName} is added to the cart.`)
+    toast.success(`${quantity} ${product.productName} is added to the cart.`);
+  };
+
+  const incCartItem = (id) => {
+    const selectedCartItem = cartItems?.find((item) => item._id === id);
+    const totalQuantities = (prevTotalQuantities) => prevTotalQuantities + 1;
+
+    const newCartItems = cartItems?.map((item) => {
+      if (item._id === id) {
+        return {
+          ...selectedCartItem,
+          quantity: selectedCartItem.quantity + 1,
+        };
+      }
+      return item;
+    });
+
+    setCartItems(newCartItems);
+    setTotalPrice((prevTotalPrice) => prevTotalPrice + selectedCartItem.price);
+    setTotalQuantities(totalQuantities);
+    setToLocalStorage(newCartItems);
+  };
+
+  const decCartItem = (id) => {
+    const selectedCartItem = cartItems.find((item) => item._id === id);
+    const totalQuantities = (prevTotalQuantities) => prevTotalQuantities - 1;
+
+    if (selectedCartItem.quantity > 1) {
+      const newCartItems = cartItems.map((item) => {
+        if (item._id === id) {
+          return {
+            ...selectedCartItem,
+            quantity: selectedCartItem.quantity - 1,
+          };
+        }
+        return item;
+      });
+
+      setCartItems(newCartItems);
+      setTotalPrice(
+        (prevTotalPrice) => prevTotalPrice - selectedCartItem.price
+      );
+      setTotalQuantities(totalQuantities);
+      setToLocalStorage(newCartItems);
+    }
+  };
+
+  const removeCartItem = (id) => {
+    const deletedCartItem = cartItems.find((item) => item._id === id);
+    const newCartItems = cartItems.filter((item) => item._id !== id);
+    const totalQuantities = (prevTotalQuantities) =>
+      prevTotalQuantities - deletedCartItem.quantity;
+
+    setCartItems(newCartItems);
+    setTotalPrice(
+      (prevTotalPrice) =>
+        prevTotalPrice - deletedCartItem.price * deletedCartItem.quantity
+    );
+    setTotalQuantities(totalQuantities);
+    setToLocalStorage(newCartItems);
   };
 
   const incQty = () => {
@@ -59,14 +135,22 @@ const AppContextProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         showCart,
-        setShowCart,
         cartItems,
         totalPrice,
         totalQuantities,
         qty,
+        setShowCart,
+        setCartItems,
+        setTotalPrice,
+        setTotalQuantities,
+        getFromLocalStorage,
+        setQty,
         incQty,
         decQty,
-        onAdd
+        onAdd,
+        incCartItem,
+        decCartItem,
+        removeCartItem,
       }}
     >
       {children}
@@ -78,7 +162,6 @@ const AppContextProvider = ({ children }) => {
 
 export const useStateContext = () => {
   const value = useContext(AppContext);
-  console.log(value);
   return value;
 };
 

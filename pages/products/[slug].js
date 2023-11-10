@@ -14,8 +14,6 @@ const ProductDetails = ({ product, products }) => {
 
   const {qty, incQty, decQty, onAdd} = useStateContext();
 
-  console.log(product);
-
   return (
     <div>
       <div className="product-details-container">

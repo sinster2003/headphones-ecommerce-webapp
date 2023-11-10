@@ -459,13 +459,26 @@
 }
 
 .cart-container-wrapper {
-    position: absolute;
-    background-color: rgb(255, 255, 255);
+    position: fixed;
+    background-color: rgb(250, 225, 225);
     top: 0;
     right: 0;
     width: 30rem;
     height: 100vh;
     transition: transform 1s ease-in-out;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 10000;
+}
+
+.cart-container {
+    min-height: 80vh;
+}
+
+.cart-container-wrapper img {
+    background-color: rgba(145, 145, 145, 0.466);
+    padding: 0.5rem;
+    border-radius: 0.35rem;
 }
 
 .cart-container .cart-item{
@@ -473,6 +486,8 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
 .cart-container .cart-item-desc {
@@ -480,7 +495,8 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin-left: -2rem;
+    margin-left: 0rem;
+    width: 11rem;
 }
 
 .cart-container .cart-item-price {
@@ -495,10 +511,60 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin: 2rem;
+    font-size: 1rem;
+}
+
+.cart-container .flex-top .left-icon,p {
+    cursor: pointer;
 }
 
 .cart-container .quantity-bar {
     justify-content: flex-start;
+}
+
+.card-items-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-items-box img {
+    height: 150px;
+    width: 150px;
+}
+
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.empty-cart svg{
+    font-size: 5rem;
+    color: rgb(255, 64, 64);
+    margin-top: 2rem;
+}
+
+.empty-cart p{
+    font-size: 1.15rem;
+    color: rgb(10, 10, 10);
+    margin: 1rem 0;
+}
+
+.empty-cart .empty-cart-btn, .stripe-btn {
+    color: white;
+    background-color: rgb(248, 58, 58) !important;
+    font-size: 1rem !important;
+    width: 15rem !important;
+    margin: 1rem 0 !important;
+}
+
+.price-cart-total {
+    text-align: center;
 }
 
 @keyframes track-motion {
