@@ -12,6 +12,7 @@ const Navbar = () => {
     totalQuantities,
     setTotalQuantities,
     getFromLocalStorage,
+    setTotalPrice
   } = useStateContext();
 
   useEffect(() => {
@@ -20,12 +21,15 @@ const Navbar = () => {
 
       if (cart) {
         let quantities = 0;
+        let price = 0;
 
         cart?.forEach((item) => {
           quantities += item.quantity;
+          price += (item.price * item.quantity);
         });
 
         setTotalQuantities(quantities);
+        setTotalPrice(price)
       }
     }
   }, []);
@@ -33,7 +37,7 @@ const Navbar = () => {
   return (
     <div className="navbar-div">
       <Link href="/" className="link">
-        <p>Phoenix Headphones</p>
+        <p>Phoenix Audio</p>
       </Link>
       <button
         type="button"

@@ -84,7 +84,7 @@
     color: rgb(119, 119, 119);
 }
 
-.hero-banner-button, .footer-banner-button {
+.hero-banner-button, .footer-banner-button, .success-wrapper button {
     background-color: rgb(248, 58, 58);
     color: rgb(251, 239, 239);
     cursor: pointer;
@@ -565,6 +565,46 @@
 
 .price-cart-total {
     text-align: center;
+}
+
+.success-wrapper{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    color: rgb(10, 10, 10);
+}
+
+.bg-success {
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 0 1rem rgba(10, 10, 10, 0.507);
+    padding: 2rem;
+    width: 40%;
+    border-radius: 1.5rem;
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.success-wrapper button {
+    width: 20rem !important;
+    margin: 1.75rem 0 0 0;
+}
+
+.insta:hover {
+    color: rgb(133, 7, 133);
+    cursor: pointer;
+}
+
+.twitter:hover {
+    color: rgb(76, 76, 250);
+    cursor: pointer;
 }
 
 @keyframes track-motion {

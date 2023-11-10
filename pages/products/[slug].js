@@ -12,7 +12,12 @@ import { useStateContext } from "@/context/AppContextProvider";
 const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
 
-  const {qty, incQty, decQty, onAdd} = useStateContext();
+  const {qty, incQty, decQty, onAdd, setShowCart} = useStateContext();
+
+  const handleBuyNow = () => {
+    onAdd(product,qty);
+    setShowCart(true);
+  }
 
   return (
     <div>
@@ -66,7 +71,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <div>
             <button onClick={() => onAdd(product, qty)} className="add-to-cart-btn hero-banner-button">Add To Cart</button>
-            <button className="hero-banner-button buy-now">Buy Now</button>
+            <button className="hero-banner-button buy-now" onClick={handleBuyNow}>Buy Now</button>
           </div>
         </div>
       </div>

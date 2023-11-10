@@ -36,14 +36,6 @@ const Cart = () => {
       const retrievedCartItems = JSON.parse(localStorage.getItem("cart"));
       if(retrievedCartItems) {
         setCartItems(retrievedCartItems);
-  
-        let price = 0;
-  
-        retrievedCartItems.forEach(item => {
-          price += item.price;
-        });
-  
-        setTotalPrice(price);
       }
     }
   }, []);

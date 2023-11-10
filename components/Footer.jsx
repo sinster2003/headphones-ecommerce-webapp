@@ -1,13 +1,13 @@
-import React from 'react';
-import {  AiFillInstagram, AiOutlineTwitter } from "react-icons/ai"
+import { AiFillInstagram } from "react-icons/ai";
+import { RiTwitterXFill } from "react-icons/ri";
 
 const Footer = () => {
   return (
     <div className="footer-div">
-      <p>Copyrights reserved Phoenix Headphones 2023</p>
+      <p>Copyrights reserved Phoenix Audio 2023</p>
       <div className="icons">
         <AiFillInstagram className="insta"/>
-        <AiOutlineTwitter className="twitter"/>
+        <RiTwitterXFill className="twitter"/>
       </div>
     </div>
   )

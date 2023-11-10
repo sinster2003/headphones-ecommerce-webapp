@@ -31,7 +31,7 @@ const FooterBanner = ({footerData}) => {
         <p className="footer-mid-text">{footerData?.midText}</p>
         <p className="desc">{footerData?.desc}</p>
         <div>
-          <Link href={`/products/${footerData?.product}`}>
+          <Link href={`/banner/${footerData?.product}`}>
             <button type="button" className="footer-banner-button">{footerData?.buttonText}</button>
           </Link>
         </div> 
