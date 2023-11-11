@@ -12,7 +12,8 @@ const Navbar = () => {
     totalQuantities,
     setTotalQuantities,
     getFromLocalStorage,
-    setTotalPrice
+    setTotalPrice,
+    setCartItems
   } = useStateContext();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const Navbar = () => {
           price += (item.price * item.quantity);
         });
 
+        setCartItems(cart);
         setTotalQuantities(quantities);
         setTotalPrice(price)
       }

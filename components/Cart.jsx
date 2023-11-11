@@ -31,15 +31,6 @@ const Cart = () => {
     removeCartItem,
   } = useStateContext();
 
-  useEffect(() => {
-    if(cartItems.length === 0) {
-      const retrievedCartItems = JSON.parse(localStorage.getItem("cart"));
-      if(retrievedCartItems) {
-        setCartItems(retrievedCartItems);
-      }
-    }
-  }, []);
-
   const handleCheckout = async () => {
 
     const stripe = await getStripe();

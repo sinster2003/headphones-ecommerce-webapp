@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../../components";
 import { client, urlFor } from "../../lib/client";
 import {
@@ -11,9 +11,18 @@ import { useStateContext } from "@/context/AppContextProvider";
 
 const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
-
   const {qty, incQty, decQty, onAdd, setShowCart} = useStateContext();
+  const widthRef = useRef();
 
+  useEffect(() => {
+    if(typeof(window) !== "undefined") {
+      if(window.innerWidth && window.innerWidth < 900) {
+        console.log(widthRef.current);
+        widthRef.current.style.width = `${products.length * 120}vw`
+      }
+    }
+  },[])
+  
   const handleBuyNow = () => {
     onAdd(product,qty);
     setShowCart(true);
@@ -70,14 +79,14 @@ const ProductDetails = ({ product, products }) => {
             </div>
           </div>
           <div>
-            <button onClick={() => onAdd(product, qty)} className="add-to-cart-btn hero-banner-button">Add To Cart</button>
+            <button onClick={() => onAdd(product, qty)} className="hero-banner-button add-to-cart-btn">Add To Cart</button>
             <button className="hero-banner-button buy-now" onClick={handleBuyNow}>Buy Now</button>
           </div>
         </div>
       </div>
       <div className="you-may-like">
         <h2>You May Also Like</h2>
-        <div className="product-card-details-wrapper">
+        <div className="product-card-details-wrapper" ref={widthRef}>
           {products.map((product) => {
             return (
               <ProductCard
