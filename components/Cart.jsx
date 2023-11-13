@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   AiOutlinePlus,
@@ -13,7 +12,6 @@ import toast from "react-hot-toast";
 import getStripe from "@/lib/getStripe";
 
 const Cart = () => {
-  const cartRef = useRef();
 
   const {
     qty,
@@ -65,7 +63,7 @@ const Cart = () => {
   }
 
   return (
-    <div ref={cartRef} className="cart-container-wrapper">
+    <div className="cart-container-wrapper">
       <div className="cart-container">
         <div>
           <button
@@ -117,7 +115,7 @@ const Cart = () => {
                 />
                 <div className="cart-item-desc">
                   <div className="cart-item-price">
-                    <p style={{ color: "rgb(0,0,0)", fontWeight: "600" }}>
+                    <p style={{ color: "rgb(0,0,0)", fontWeight: "600", width: "9rem"}}>
                       {item.productName}
                     </p>
                     <p style={{ color: "rgb(255,0,0)", fontWeight: "600" }}>
@@ -141,15 +139,8 @@ const Cart = () => {
                       <AiOutlinePlus />
                     </button>
                   </div>
-                </div>
-                <div>
                   <button
-                    style={{
-                      position: "absolute",
-                      bottom: "10%",
-                      right: "8%",
-                      cursor: "pointer",
-                    }}
+                    className="remove-cart-btn"
                     onClick={() => {
                       removeCartItem(item._id);
                     }}

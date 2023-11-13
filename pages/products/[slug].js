@@ -11,22 +11,12 @@ import { useStateContext } from "@/context/AppContextProvider";
 
 const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
-  const {qty, incQty, decQty, onAdd, setShowCart} = useStateContext();
-  const widthRef = useRef();
+  const { qty, incQty, decQty, onAdd, setShowCart } = useStateContext();
 
-  useEffect(() => {
-    if(typeof(window) !== "undefined") {
-      if(window.innerWidth && window.innerWidth < 900) {
-        console.log(widthRef.current);
-        widthRef.current.style.width = `${products.length * 120}vw`
-      }
-    }
-  },[])
-  
   const handleBuyNow = () => {
-    onAdd(product,qty);
+    onAdd(product, qty);
     setShowCart(true);
-  }
+  };
 
   return (
     <div>
@@ -44,7 +34,9 @@ const ProductDetails = ({ product, products }) => {
                 <img
                   key={i}
                   src={urlFor(image)}
-                  className={i === index ? "small-image selected-image": "small-image"}
+                  className={
+                    i === index ? "small-image selected-image" : "small-image"
+                  }
                   onMouseEnter={() => setIndex(i)}
                 />
               ))}
@@ -79,23 +71,47 @@ const ProductDetails = ({ product, products }) => {
             </div>
           </div>
           <div>
-            <button onClick={() => onAdd(product, qty)} className="hero-banner-button add-to-cart-btn">Add To Cart</button>
-            <button className="hero-banner-button buy-now" onClick={handleBuyNow}>Buy Now</button>
+            <button
+              onClick={() => onAdd(product, qty)}
+              className="hero-banner-button add-to-cart-btn"
+            >
+              Add To Cart
+            </button>
+            <button
+              className="hero-banner-button buy-now"
+              onClick={handleBuyNow}
+            >
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
       <div className="you-may-like">
         <h2>You May Also Like</h2>
-        <div className="product-card-details-wrapper" ref={widthRef}>
-          {products.map((product) => {
-            return (
-              <ProductCard
-                key={product.productName}
-                productObject={product}
-                className="product-card-details"
-              />
-            );
-          })}
+        <div className="infinite-flex-div">
+          <div className="product-card-details-wrapper">
+            {products.map((product) => {
+              return (
+                <ProductCard
+                  key={product.productName}
+                  productObject={product}
+                  className="product-card-details"
+                />
+              );
+            })}
+          </div>
+          {/* infinite scrolling */}
+          <div className="product-card-details-wrapper">
+            {products.map((product) => {
+              return (
+                <ProductCard
+                  key={product.productName}
+                  productObject={product}
+                  className="product-card-details"
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
