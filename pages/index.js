@@ -23,7 +23,7 @@ const Home = ({ productData, bannerData }) => {
         }
       </div>
 
-      <FooterBanner footerData={bannerData[0]}/>
+      <FooterBanner footerData={bannerData[1]}/>
     </>
   )
 }
