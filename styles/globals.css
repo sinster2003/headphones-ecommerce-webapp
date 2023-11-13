@@ -80,7 +80,7 @@
 
 .hero-banner-container img {
     position: absolute;
-    width: 25rem;
+    width: 23rem;
     top: -4.5%;
     right: 30%;
 }
@@ -844,11 +844,11 @@
     }
 }
 
-@media screen and (min-width: 500px) and (max-width: 900px){
+@media screen and (min-width: 600px) and (max-width: 900px){
     .hero-banner-container img {
         width: 20rem;
-        top: 10%;
-        right: 15%;
+        top: 6%;
+        right: 13%;
         z-index: 0;
     }
 
