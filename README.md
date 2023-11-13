@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Phoenix Audio
+
+Phoenix Audio is a Mobile responsive Next.js Full Stack Web Application based on page routers. Content in the web application is maintained using Sanity Studio and payment is possible via the integration of Stripe.
 
 ## Getting Started
 
@@ -24,17 +26,39 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Technologies Used in The Web App
 
-To learn more about Next.js, take a look at the following resources:
+* Nextjs
+* Reactjs
+* Sanity
+* Stripe integration
+* Vanilla CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Dependencies Used in The Web App
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+* @sanity/client (Connection between Sanity Studio and Nextjs Frontend for data fetching)
+* @sanity/image-url (Creating image url present in the Sanity CMS)
+* @stripe/stripe-js (To load stripe.js files)
+* stripe (Stripe Client for integration)
+* next
+* react 
+* react-dom
+* canvas-confetti (party-poppers)
+* react-icons (used for icons)
+* react-hot-toast (messages)
 
-## Deploy on Vercel
+## Deployed version of Phoenix Audio
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+https://headphones-ecommerce-webapp-ppm9.vercel.app/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Screenshots
+
+![screencapture-headphones-ecommerce-webapp-ppm9-vercel-app-2023-11-13-15_02_49](https://github.com/sinster2003/headphones-ecommerce-webapp/assets/98259926/3adea254-83af-4ba1-905a-c4471b9fccbe)
+
+![screencapture-headphones-ecommerce-webapp-ppm9-vercel-app-products-rockerz-gaming-headphones-2023-11-13-15_03_40](https://github.com/sinster2003/headphones-ecommerce-webapp/assets/98259926/3540f156-2e4f-426b-8077-149272020b61)
+
+![screencapture-headphones-ecommerce-webapp-ppm9-vercel-app-products-rockerz-gaming-headphones-2023-11-13-15_03_40](https://github.com/sinster2003/headphones-ecommerce-webapp/assets/98259926/e1762f9f-15d3-4f80-9315-4e1a92f5b2d6)
+
+![screencapture-headphones-ecommerce-webapp-ppm9-vercel-app-products-rockerz-gaming-headphones-2023-11-13-15_04_30](https://github.com/sinster2003/headphones-ecommerce-webapp/assets/98259926/ab43ac0b-2a4e-4f75-bb75-cc3d2f5cc09e)
+
+![screencapture-headphones-ecommerce-webapp-ppm9-vercel-app-success-2023-11-13-15_05_17](https://github.com/sinster2003/headphones-ecommerce-webapp/assets/98259926/630e8857-ef45-4033-a844-449caa5a01b9)
