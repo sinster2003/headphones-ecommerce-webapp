@@ -1,7 +1,7 @@
 // backend server
 
 import Stripe from "stripe";
-import { urlFor } from "@/lib/client";
+import { urlFor } from "../../../lib/client";
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_SECRET_KEY);
 

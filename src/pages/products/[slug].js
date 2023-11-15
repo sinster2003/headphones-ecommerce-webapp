@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { ProductCard } from "../../components";
-import { client, urlFor } from "../../lib/client";
+import { ProductCard } from "../../../components";
+import { client, urlFor } from "../../../lib/client";
 import {
   AiOutlineStar,
   AiFillStar,
   AiOutlineMinus,
   AiOutlinePlus,
 } from "react-icons/ai";
-import { useStateContext } from "@/context/AppContextProvider";
+import { useStateContext } from "../../../context/AppContextProvider";
 
 const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);

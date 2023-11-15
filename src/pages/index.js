@@ -1,6 +1,5 @@
-import React from "react";
-import { HeroBanner,ProductCard,FooterBanner } from "../components";
-import { client } from "../lib/client";
+import { HeroBanner,ProductCard,FooterBanner } from "../../components";
+import { client } from "../../lib/client";
 
 const Home = ({ productData, bannerData }) => {
 

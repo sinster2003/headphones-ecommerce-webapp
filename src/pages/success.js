@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { BiShoppingBag } from "react-icons/bi";
-import { useStateContext } from "@/context/AppContextProvider";
-import getConfetti from "@/lib/utils";
+import { useStateContext } from "../../context/AppContextProvider";
+import getConfetti from "../../lib/utils";
 
 const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
